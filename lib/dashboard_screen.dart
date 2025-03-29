@@ -168,26 +168,26 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           ),
                           _builddevices(
                             'Devices',
-                            messages['smarthome/value/device2'],
-                            messages['smarthome/value/device2'] == '1'
+                            messages['data/value/device2'],
+                            messages['data/value/device2'] == '1'
                                 ? 'DEVICE2ON'
                                 : 'DEVICE2OFF',
                             () {
                               mqttProvider.publish(
-                                'smarthome/onoff/device2',
-                                messages['smarthome/value/device2'] == '1'
+                                'data/onoff/device2',
+                                messages['data/value/device2'] == '1'
                                     ? 'OFF'
                                     : 'ON',
                               );
                             },
-                            messages['smarthome/value/device1'],
-                            messages['smarthome/value/device1'] == '1'
+                            messages['data/value/device1'],
+                            messages['data/value/device1'] == '1'
                                 ? 'DEVICE1ON'
                                 : 'DEVICE1OFF',
                             () {
                               mqttProvider.publish(
-                                'smarthome/onoff/device1',
-                                messages['smarthome/value/device1'] == '1'
+                                'data/onoff/device1',
+                                messages['data/value/device1'] == '1'
                                     ? 'OFF'
                                     : 'ON',
                               );
@@ -195,16 +195,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             () {
                               // Toggling both devices ON/OFF based on their current status
                               bool areBothOn =
-                                  messages['smarthome/value/device1'] == '1' &&
-                                  messages['smarthome/value/device2'] == '1';
+                                  messages['data/value/device1'] == '1' &&
+                                  messages['data/value/device2'] == '1';
                               String newState = areBothOn ? 'OFF' : 'ON';
 
                               mqttProvider.publish(
-                                'smarthome/onoff/device1',
+                                'data/onoff/device1',
                                 newState,
                               );
                               mqttProvider.publish(
-                                'smarthome/onoff/device2',
+                                'data/onoff/device2',
                                 newState,
                               );
                             },
@@ -212,15 +212,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
                           _buildSensorCard(
                             'Moisture Sensor',
-                            messages['smarthome/moisture/onoff'],
-                            messages['smarthome/moisture/value'] == null
+                            messages['data/moisture/onoff'],
+                            messages['data/moisture/value'] == null
                                 ? 'Moisture Level: 0'
-                                : "Moisture Level: ${messages['smarthome/moisture/value']}",
-                            messages['smarthome/moisture'],
+                                : "Moisture Level: ${messages['data/moisture/value']}",
+                            messages['data/moisture'],
                             () {
                               mqttProvider.publish(
-                                'smarthome/moisture/control',
-                                messages['smarthome/moisture/onoff'] == '1'
+                                'data/moisture/control',
+                                messages['data/moisture/onoff'] == '1'
                                     ? 'OFF'
                                     : 'ON',
                               );
@@ -228,15 +228,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           ),
                           _buildSensorCard(
                             'Ultrasonic Sensor',
-                            messages['smarthome/ultrasonic/onoff'],
-                            messages['smarthome/ultrasonic/value'] == null
+                            messages['data/ultrasonic/onoff'],
+                            messages['data/ultrasonic/value'] == null
                                 ? 'Distance: 0 cm'
-                                : "Distance: ${messages['smarthome/ultrasonic/value']} cm",
-                            messages['smarthome/ultrasonic'],
+                                : "Distance: ${messages['data/ultrasonic/value']} cm",
+                            messages['data/ultrasonic'],
                             () {
                               mqttProvider.publish(
-                                'smarthome/ultrasonic/control',
-                                messages['smarthome/ultrasonic/onoff'] == '1'
+                                'data/ultrasonic/control',
+                                messages['data/ultrasonic/onoff'] == '1'
                                     ? 'OFF'
                                     : 'ON',
                               );
@@ -244,15 +244,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           ),
                           _buildSensorCard(
                             'Gas Sensor',
-                            messages['smarthome/gas/onoff'],
-                            messages['smarthome/gas/value'] == null
+                            messages['data/gas/onoff'],
+                            messages['data/gas/value'] == null
                                 ? 'Gas Level: 0'
-                                : "Gas Level: ${messages['smarthome/gas/value']}",
-                            messages['smarthome/gas'],
+                                : "Gas Level: ${messages['data/gas/value']}",
+                            messages['data/gas'],
                             () {
                               mqttProvider.publish(
-                                'smarthome/gas/control',
-                                messages['smarthome/gas/onoff'] == '1'
+                                'data/gas/control',
+                                messages['data/gas/onoff'] == '1'
                                     ? 'OFF'
                                     : 'ON',
                               );
@@ -260,15 +260,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           ),
                           _buildSensorCard(
                             'Motion Sensor',
-                            messages['smarthome/motion/onoff'],
-                            messages['smarthome/motion/value'] == null
+                            messages['data/motion/onoff'],
+                            messages['data/motion/value'] == null
                                 ? 'Motion Status: 0'
-                                : "Motion Status: ${messages['smarthome/motion/value']}",
-                            messages['smarthome/motion'],
+                                : "Motion Status: ${messages['data/motion/value']}",
+                            messages['data/motion'],
                             () {
                               mqttProvider.publish(
-                                'smarthome/motion/control',
-                                messages['smarthome/motion/onoff'] == '1'
+                                'data/motion/control',
+                                messages['data/motion/onoff'] == '1'
                                     ? 'OFF'
                                     : 'ON',
                               );
@@ -276,15 +276,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           ),
                           _buildSensorCard(
                             'LDR Sensor',
-                            messages['smarthome/ldr/onoff'],
-                            messages['smarthome/ldr/value'] == null
+                            messages['data/ldr/onoff'],
+                            messages['data/ldr/value'] == null
                                 ? 'Light Intensity: 0'
-                                : 'Light Intensity: ${messages['smarthome/ldr/value']}',
-                            messages['smarthome/ldr'],
+                                : 'Light Intensity: ${messages['data/ldr/value']}',
+                            messages['data/ldr'],
                             () {
                               mqttProvider.publish(
-                                'smarthome/ldr/control',
-                                messages['smarthome/ldr/onoff'] == '1'
+                                'data/ldr/control',
+                                messages['data/ldr/onoff'] == '1'
                                     ? 'OFF'
                                     : 'ON',
                               );
@@ -292,15 +292,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           ),
                           _buildSensorCard(
                             'Fire Sensor',
-                            messages['smarthome/fire/onoff'],
-                            messages['smarthome/fire/value'] == null
+                            messages['data/fire/onoff'],
+                            messages['data/fire/value'] == null
                                 ? 'Fire Intensity: 0'
-                                : 'Fire Intensity: ${messages['smarthome/fire/value']}',
-                            messages['smarthome/fire'],
+                                : 'Fire Intensity: ${messages['data/fire/value']}',
+                            messages['data/fire'],
                             () {
                               mqttProvider.publish(
-                                'smarthome/fire/control',
-                                messages['smarthome/fire/onoff'] == '1'
+                                'data/fire/control',
+                                messages['data/fire/onoff'] == '1'
                                     ? 'OFF'
                                     : 'ON',
                               );
@@ -308,13 +308,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           ),
                           _card_temp(
                             'Temperature Sensor',
-                            messages['smarthome/temp/onoff'],
-                            messages['smarthome/temp'],
-                            messages['smarthome/hume'],
+                            messages['data/temp/onoff'],
+                            messages['data/temp'],
+                            messages['data/hume'],
                             () {
                               mqttProvider.publish(
-                                'smarthome/temp/control',
-                                messages['smarthome/temp/onoff'] == '1'
+                                'data/temp/control',
+                                messages['data/temp/onoff'] == '1'
                                     ? 'OFF'
                                     : 'ON',
                               );
@@ -322,14 +322,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           ),
                           _buildfanled(
                             'Fan Control',
-                            messages['smarthome/fan/value'],
-                            messages['smarthome/fan/value'] == '1'
+                            messages['data/fan/value'],
+                            messages['data/fan/value'] == '1'
                                 ? 'FANON'
                                 : 'FANOFF',
                             () {
                               mqttProvider.publish(
-                                'smarthome/fan',
-                                messages['smarthome/fan/value'] == '1'
+                                'data/fan',
+                                messages['data/fan/value'] == '1'
                                     ? 'OFF'
                                     : 'ON',
                               );
@@ -337,14 +337,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           ),
                           _buildfanled(
                             'LED Control',
-                            messages['smarthome/led/value'],
-                            messages['smarthome/led/value'] == '1'
+                            messages['data/led/value'],
+                            messages['data/led/value'] == '1'
                                 ? 'LEDON'
                                 : 'LEDOFF',
                             () {
                               mqttProvider.publish(
-                                'smarthome/led',
-                                messages['smarthome/led/value'] == '1'
+                                'data/led',
+                                messages['data/led/value'] == '1'
                                     ? 'OFF'
                                     : 'ON',
                               );
@@ -353,29 +353,29 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           SizedBox(height: 60),
                           // _buildSensorCard(
                           //   'Device 1',
-                          //   messages['smarthome/value/device1'],
-                          //   messages['smarthome/value/device1'] == null
+                          //   messages['data/value/device1'],
+                          //   messages['data/value/device1'] == null
                           //       ? '0'
-                          //       : messages['smarthome/value/device1'],
-                          //   messages['smarthome/value/device1'] == '1' ? 'DEVICE1ON' : 'DEVICE1OFF',
+                          //       : messages['data/value/device1'],
+                          //   messages['data/value/device1'] == '1' ? 'DEVICE1ON' : 'DEVICE1OFF',
                           //   () {
                           //     mqttProvider.publish(
-                          //       'smarthome/onoff/device1',
-                          //       messages['smarthome/led/value'] == '1' ? 'OFF' : 'ON',
+                          //       'data/onoff/device1',
+                          //       messages['data/led/value'] == '1' ? 'OFF' : 'ON',
                           //     );
                           //   },
                           // ),
                           // _buildSensorCard(
                           //   'Device 2',
-                          //   messages['smarthome/value/device2'],
-                          //   messages['smarthome/value/device2'] == null
+                          //   messages['data/value/device2'],
+                          //   messages['data/value/device2'] == null
                           //       ? '0'
-                          //       : messages['smarthome/value/device2'],
-                          //   messages['smarthome/value/device2'] == '1' ? 'DEVICE2ON' : 'DEVICE2OFF',
+                          //       : messages['data/value/device2'],
+                          //   messages['data/value/device2'] == '1' ? 'DEVICE2ON' : 'DEVICE2OFF',
                           //   () {
                           //     mqttProvider.publish(
-                          //       'smarthome/onoff/device2',
-                          //       messages['smarthome/led/value'] == '1' ? 'OFF' : 'ON',
+                          //       'data/onoff/device2',
+                          //       messages['data/led/value'] == '1' ? 'OFF' : 'ON',
                           //     );
                           //   },
                           // ),
